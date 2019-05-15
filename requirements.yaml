@@ -104,5 +104,5 @@ dependencies:
     - webencodings==0.5.1
     - werkzeug==0.14.1
     - widgetsnbextension==3.2.0
-prefix: /home/felipe/anaconda3/envs/coiltraine
+prefix: /home/yfhuang/anaconda3/envs/coiltraine
 
