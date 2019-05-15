@@ -1,5 +1,5 @@
 ####General Configuration Parameters####
-SAVE_SCHEDULE: range(0,10001, 2000) # The iterations where training checkpoints are going to be saved
+SAVE_SCHEDULE: range(0,20001, 2000) # The iterations where training checkpoints are going to be saved
 NUMBER_OF_LOADING_WORKERS: 12   # Number of threads used in the data loader
 MAGICAL_SEED: 26957017
 
@@ -26,7 +26,7 @@ USE_NOISE_DATA: True  # If we use the noise data.
 NUMBER_OF_HOURS: 50  # Number of hours to be taken from the input data
 
 #### Testing Related Parameters ####
-TEST_SCHEDULE: range(2000,10001, 2000)  # The frequency the model is actually tested.
+TEST_SCHEDULE: range(2000,20001, 2000)  # The frequency the model is actually tested.
 
 #### Model Related Parameters ####
 # Network Parameters #
