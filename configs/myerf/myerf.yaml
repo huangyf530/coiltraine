@@ -34,7 +34,7 @@ MODEL_TYPE: 'coil-icra' # The type of model. Defines which modules the model has
 MODEL_CONFIGURATION:  # Based on the MODEL_TYPE, we specify the structure
   perception:  # The module that process the image input, it ouput the number of classes
     erf:
-      name: erf
+      name: 'erf'
       num_classes: 2
   measurements:  # The module the process the input float data, in this case speed_input
     fc:  # Easy to configure fully connected layer

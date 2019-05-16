@@ -156,13 +156,13 @@ class Net(nn.Module):
             return self.decoder.forward(output)
 
 
-def erfnet(pretrained=False, **kwargs):
+def erfnet(num_classes, pretrained=False):
     """Constructs a erfnet model.
 
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
     """
-    model = Net(kwargs)
+    model = Net(num_classes=num_classes)
     if pretrained:
         model_dict = model_zoo.load_url(model_urls['ERFnet'])
         state = model.state_dict()
