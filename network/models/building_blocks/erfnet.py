@@ -134,7 +134,7 @@ class Decoder(nn.Module):
 
         output = self.output_conv(output)
 
-        return output
+        return output, None
 
 
 # ERFNet
