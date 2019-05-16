@@ -20,6 +20,7 @@ class DownsamplerBlock (nn.Module):
         self.bn = nn.BatchNorm2d(noutput, eps=1e-3)
 
     def forward(self, input):
+        print([self.conv(input).size(), self.pool(input).size()])
         output = torch.cat([self.conv(input), self.pool(input)], 1)
         output = self.bn(output)
         return F.relu(output)
