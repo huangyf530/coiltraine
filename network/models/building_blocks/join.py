@@ -36,6 +36,7 @@ class Join(nn.Module):
 
         if self.mode == 'cat':
             j = torch.cat((x, m), 1)
+            print("j1", j.size())
 
         else:
             raise ValueError("Mode to join networks not found")
