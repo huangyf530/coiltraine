@@ -20,30 +20,24 @@ from carla08.driving_benchmark.experiment_suites.experiment_suite import Experim
 class TestT2(ExperimentSuite):
 
     def __init__(self):
-        super(TestT2Large, self).__init__('Town02')
+        super(TestT2, self).__init__('Town02')
 
     @property
     def train_weathers(self):
         return []
-
     @property
     def test_weathers(self):
-        return [12, 13, 14]
+        return [14]
 
     @property
     def collision_as_failure(self):
         return True
 
     def _poses(self):
-        def _poses_navigation():
-            return [[19, 66], [79, 14], [19, 57], [23, 1],
-                    [53, 76], [42, 13], [31, 71], [33, 5],
-                    [54, 30], [10, 61], [66, 3], [27, 12],
-                    [79, 19], [2, 29], [16, 14], [5, 57],
-                    [70, 73], [46, 67], [57, 50], [61, 49], [21, 12],
-                    [51, 81], [77, 68], [56, 65], [43, 54]]
 
-        return [[], [], [], _poses_navigation()]
+        return [[[38, 34], [4, 2]]]
+
+
 
     def build_experiments(self):
         """
@@ -61,6 +55,7 @@ class TestT2(ExperimentSuite):
         camera.set_image_size(800, 600)
         camera.set_position(2.0, 0.0, 1.4)
         camera.set_rotation(-15.0, 0, 0)
+
 
         poses_tasks = self._poses()
         vehicles_tasks = [0, 0, 0, 15]
