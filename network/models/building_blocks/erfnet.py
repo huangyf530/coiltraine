@@ -150,7 +150,7 @@ class Net(nn.Module):
 
     def forward(self, input, only_encode=False):
         if only_encode:
-            return self.encoder.forward(input, predict=True)
+            return self.encoder.forward(input, predict=True), None
         else:
             output = self.encoder(input)  # predict=False by default
             return self.decoder.forward(output), None
