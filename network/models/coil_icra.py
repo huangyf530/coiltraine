@@ -115,6 +115,7 @@ class CoILICRA(nn.Module):
     def forward(self, x, a):
         """ ###### APPLY THE PERCEPTION MODULE """
         x, inter = self.perception(x)
+        print(x.size())
         ## Not a variable, just to store intermediate layers for future vizualization
         #self.intermediate_layers = inter
 
@@ -123,10 +124,12 @@ class CoILICRA(nn.Module):
         """ Join measurements and perception"""
         j = self.join(x, m)
 
+        print("j", j.size())
         branch_outputs = self.branches(j)
 
         speed_branch_output = self.speed_branch(x)
 
+        print("speed branck output:", speed_branch_output.size())
         # We concatenate speed with the rest.
         return branch_outputs + [speed_branch_output]
 
