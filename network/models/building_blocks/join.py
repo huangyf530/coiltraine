@@ -33,7 +33,8 @@ class Join(nn.Module):
 
     def forward(self, x, m):
         # get only the speeds from measurement labels
-
+        print("x", x.size())
+        print("m", m.size())
         if self.mode == 'cat':
             j = torch.cat((x, m), 1)
             print("j1", j.size())
