@@ -113,7 +113,7 @@ def get_latest_checkpoint_drive(control_filename):
     f = open(os.path.join(csv_file_path, control_filename), "r")
     header = f.readline()
     header = header.split(',')
-    header[-1] = header[-1][:-2]
+    header[-1] = header[-1][:-1]
     f.close()
 
     data_matrix = np.loadtxt(open(os.path.join(csv_file_path, control_filename), "rb"),

@@ -60,11 +60,11 @@ def split_episodes(meas_file):
         a vector with the travelled distance on each episode
 
     """
-    f = open(meas_file, "rU")
+    f = open(meas_file, "r")
     header_details = f.readline()
 
     header_details = header_details.split(',')
-    header_details[-1] = header_details[-1][:-2]
+    header_details[-1] = header_details[-1][:-1]
     f.close()
 
     print (header_details)

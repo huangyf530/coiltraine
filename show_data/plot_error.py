@@ -29,3 +29,8 @@ if __name__=="__main__":
     no_timeout_pos, end_cause = np.where(all_ends == 1)
     print(no_timeout_pos)
     print(end_cause)
+    t1 = []
+    t2 =[]
+    t3 = np.zeros(len(a))
+    t3[t1] = t2 + 1
+    print(t3)

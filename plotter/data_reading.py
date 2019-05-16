@@ -39,10 +39,10 @@ def augment_steering(camera_angle, steer, speed):
 
 def read_summary_csv(control_csv_file):
 
-    f = open(control_csv_file, "rU")
+    f = open(control_csv_file, "r")
     header = f.readline()
     header = header.split(',')
-    header[-1] = header[-1][:-2]
+    header[-1] = header[-1][:-1]
     f.close()
 
     data_matrix = np.loadtxt(control_csv_file, delimiter=",", skiprows=1)
@@ -65,10 +65,10 @@ def read_summary_csv(control_csv_file):
 def read_summary_tasks_csv(control_csv_file):
 
 
-    f = open(control_csv_file, "rU")
+    f = open(control_csv_file, "r")
     header = f.readline()
     header = header.split(',')
-    header[-1] = header[-1][:-2]
+    header[-1] = header[-1][:-1]
     f.close()
 
     print (header)
@@ -124,7 +124,7 @@ def read_control_csv(control_csv_file):
     f = open(control_csv_file, "r")
     header = f.readline()
     header = header.split(',')
-    header[-1] = header[-1][:-2]
+    header[-1] = header[-1][:-1]
     f.close()
 
 
