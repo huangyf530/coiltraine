@@ -134,7 +134,7 @@ class Decoder(nn.Module):
 
         output = self.output_conv(output)
 
-        return output, None
+        return output
 
 
 # ERFNet
@@ -153,7 +153,7 @@ class Net(nn.Module):
             return self.encoder.forward(input, predict=True)
         else:
             output = self.encoder(input)  # predict=False by default
-            return self.decoder.forward(output)
+            return self.decoder.forward(output), None
 
 
 def erfnet(num_classes, pretrained=False):
