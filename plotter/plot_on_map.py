@@ -141,12 +141,13 @@ def get_causes_of_end(summary_file):
                                np.expand_dims(end_vehicle, axis=1),
                                np.expand_dims(end_other, axis=1)),
                               axis=1)
-    print(all_ends)
+    print("all_ends:", all_ends)
     no_timeout_pos, end_cause = np.where(all_ends == 1)
-    print(no_timeout_pos)
-    print(end_cause)
+    print("no_time_out:", no_timeout_pos)
+    print("end_cause:", end_cause)
     final_end_cause = np.zeros((len(success)))
     final_end_cause[no_timeout_pos] = end_cause + 1
+    print("final_end_cause:", final_end_cause)
 
     return final_end_cause
 

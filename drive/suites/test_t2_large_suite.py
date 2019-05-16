@@ -42,7 +42,7 @@ class TestT2Large(ExperimentSuite):
                     [70, 73], [46, 67], [57, 50], [61, 49], [21, 12],
                     [51, 81], [77, 68], [56, 65], [43, 54]]
 
-        return [[], [], [], _poses_navigation()]
+        return [_poses_navigation()]
 
 
 
