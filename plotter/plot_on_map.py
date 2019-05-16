@@ -129,6 +129,9 @@ def get_causes_of_end(summary_file):
 
     summary_matrix = np.loadtxt(open(summary_file, "rb"), delimiter=",", skiprows=1)
 
+    print("summary file:", summary_file)
+    print(header_summary)
+
     success = summary_matrix[:, header_summary.index('result')]
     end_pedestrian = summary_matrix[:, header_summary.index('end_pedestrian_collision')]
     end_vehicle = summary_matrix[:, header_summary.index('end_vehicle_collision')]
