@@ -66,25 +66,25 @@ class non_bottleneck_1d(nn.Module):
 class Encoder(nn.Module):
     def __init__(self, num_classes):
         super().__init__()
-        self.initial_block = DownsamplerBlock(3, 16)
+        self.initial_block = DownsamplerBlock(3, 16)  # 100 * 44
 
         self.layers = nn.ModuleList()
 
-        self.layers.append(DownsamplerBlock(16, 64))
+        # self.layers.append(DownsamplerBlock(16, 64))
 
         for x in range(0, 5):  # 5 times
-            self.layers.append(non_bottleneck_1d(64, 0.03, 1))
+            self.layers.append(non_bottleneck_1d(16, 0.03, 1))
 
-        self.layers.append(DownsamplerBlock(64, 128))
+        self.layers.append(DownsamplerBlock(16, 64))  # 50 * 22
 
-        for x in range(0, 2):  # 2 times
-            self.layers.append(non_bottleneck_1d(128, 0.3, 2))
-            self.layers.append(non_bottleneck_1d(128, 0.3, 4))
-            self.layers.append(non_bottleneck_1d(128, 0.3, 8))
-            self.layers.append(non_bottleneck_1d(128, 0.3, 16))
+        for x in range(0, 1):  # 1 times
+            self.layers.append(non_bottleneck_1d(64, 0.3, 2))
+            self.layers.append(non_bottleneck_1d(64, 0.3, 4))
+            self.layers.append(non_bottleneck_1d(64, 0.3, 8))
+            self.layers.append(non_bottleneck_1d(64, 0.3, 16))
 
         # Only in encoder mode:
-        self.output_conv = nn.Conv2d(128, num_classes, 1, stride=1, padding=0, bias=True)
+        self.output_conv = nn.Conv2d(64, num_classes, 1, stride=1, padding=0, bias=True)
 
     def forward(self, input, predict=False):
         output = self.initial_block(input)
@@ -116,13 +116,13 @@ class Decoder(nn.Module):
 
         self.layers = nn.ModuleList()
 
-        self.layers.append(UpsamplerBlock(128, 64))
+        self.layers.append(UpsamplerBlock(64, 16))
         self.layers.append(non_bottleneck_1d(64, 0, 1))
         self.layers.append(non_bottleneck_1d(64, 0, 1))
 
-        self.layers.append(UpsamplerBlock(64, 16))
-        self.layers.append(non_bottleneck_1d(16, 0, 1))
-        self.layers.append(non_bottleneck_1d(16, 0, 1))
+        # self.layers.append(UpsamplerBlock(64, 16))
+        # self.layers.append(non_bottleneck_1d(16, 0, 1))
+        # self.layers.append(non_bottleneck_1d(16, 0, 1))
 
         self.output_conv = nn.ConvTranspose2d(16, num_classes, 2, stride=2, padding=0, output_padding=0, bias=True)
 
@@ -142,7 +142,7 @@ class Net(nn.Module):
     def __init__(self, num_classes, encoder=None):  # use encoder to pass pretrained encoder
         super().__init__()
 
-        if (encoder == None):
+        if encoder == None:
             self.encoder = Encoder(num_classes)
         else:
             self.encoder = encoder
@@ -162,9 +162,8 @@ def erfnet(pretrained=False, **kwargs):
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
     """
-    model = Net(2)
+    model = Net(kwargs)
     if pretrained:
-
         model_dict = model_zoo.load_url(model_urls['ERFnet'])
         state = model.state_dict()
         state.update(model_dict)

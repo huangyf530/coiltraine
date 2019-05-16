@@ -55,6 +55,14 @@ class CoILICRA(nn.Module):
 
             number_output_neurons = params['perception']['res']['num_classes']
 
+        elif 'erf' in params['perception']:
+            erf_model = importlib.import_module('network.models.building_blocks.erfnet')
+            erf_model = getattr(erf_model, 'erfnet')
+            self.perception = erf_model(pretrained=g_conf.PRE_TRAINED,
+                                        num_classes=params['perception']['erf']['num_classes'])
+
+            number_output_neurons = params['perception']['erf']['num_classes']
+
         else:
 
             raise ValueError("invalid convolution layer type")
