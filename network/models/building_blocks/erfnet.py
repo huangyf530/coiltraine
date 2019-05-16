@@ -117,8 +117,8 @@ class Decoder(nn.Module):
         self.layers = nn.ModuleList()
 
         self.layers.append(UpsamplerBlock(64, 16))
-        self.layers.append(non_bottleneck_1d(64, 0, 1))
-        self.layers.append(non_bottleneck_1d(64, 0, 1))
+        self.layers.append(non_bottleneck_1d(16, 0, 1))
+        self.layers.append(non_bottleneck_1d(16, 0, 1))
 
         # self.layers.append(UpsamplerBlock(64, 16))
         # self.layers.append(non_bottleneck_1d(16, 0, 1))
