@@ -158,6 +158,7 @@ class Net(nn.Module):
         else:
             output = self.encoder(input)  # predict=False by default
             output = self.decoder.forward(output)
+            print("output", output.size())
             return self.fc(output), None
 
 
