@@ -159,7 +159,7 @@ class Net(nn.Module):
             output = self.encoder(input)  # predict=False by default
             output = self.decoder.forward(output)
             print("output", output.size())
-            return self.fc(output), None
+            return self.fc(output.view(output.size(0), -1)), None
 
 
 def erfnet(num_classes, pretrained=False):
