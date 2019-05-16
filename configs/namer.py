@@ -65,8 +65,10 @@ def generate_name(g_conf):
     #TODO: for now is just saying the number of convs, add a layer counting
     if 'conv' in g_conf.MODEL_CONFIGURATION['perception']:
         final_name_string += '_' + str(len(g_conf.MODEL_CONFIGURATION['perception']['conv']['kernels'])) +'conv'
-    else:  # FOR NOW IT IS A RES MODEL
+    elif 'res' in g_conf.MODEL_CONFIGURATION['perception']:  # FOR NOW IT IS A RES MODEL
         final_name_string += '_' + str(g_conf.MODEL_CONFIGURATION['perception']['res']['name'])
+    else:
+        final_name_string += '_' + str(g_conf.MODEL_CONFIGURATION['perception']['erf']['name'])
 
     # Model Regularization
     # We start by checking if there is some kind of augmentation, and the schedule name.
