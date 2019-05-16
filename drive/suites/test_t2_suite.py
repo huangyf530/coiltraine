@@ -20,7 +20,7 @@ from carla08.driving_benchmark.experiment_suites.experiment_suite import Experim
 class TestT2(ExperimentSuite):
 
     def __init__(self):
-        super(TestT2Large, self).__init__('Town02')
+        super(TestT2, self).__init__('Town02')
 
     @property
     def train_weathers(self):
