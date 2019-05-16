@@ -163,10 +163,10 @@ def erfnet(num_classes, pretrained=False):
         pretrained (bool): If True, returns a model pre-trained on ImageNet
     """
     model = Net(num_classes=num_classes)
-    if pretrained:
-        model_dict = model_zoo.load_url(model_urls['ERFnet'])
-        state = model.state_dict()
-        state.update(model_dict)
-        model.load_state_dict(state)
+    # if pretrained:
+    #     model_dict = model_zoo.load_url(model_urls['ERFnet'])
+    #     state = model.state_dict()
+    #     state.update(model_dict)
+    #     model.load_state_dict(state)
 
     return model
