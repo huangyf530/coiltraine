@@ -145,6 +145,7 @@ def folder_execute(params=None):
                     allocation_parameters['drive_cost'] \
                     and (train_status == 'Iterating' or train_status == 'Loading' or
                          train_status == 'Finished'):
+                print(process_specs['types'])
                 free_gpus, resources_on_most_free_gpu, gpu_number = allocate_gpu_resources(
                                             free_gpus, allocation_parameters['drive_cost'])
                 execute_drive(gpu_number, process_specs['folder'], process_specs['experiment'],
