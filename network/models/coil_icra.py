@@ -126,7 +126,7 @@ class CoILICRA(nn.Module):
 
         print("j", j.size())
         branch_outputs = self.branches(j)
-        print("branch output:", branch_outputs.size())
+        print(branch_outputs)
 
         speed_branch_output = self.speed_branch(x)
 
