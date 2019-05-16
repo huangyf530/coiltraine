@@ -120,11 +120,11 @@ def get_causes_of_end(summary_file):
         cause ( pedestrian, vehicle, timeout, other)
 
     """
-    f = open(summary_file, "rU")
+    f = open(summary_file, "r")
     header_summary = f.readline()
 
     header_summary = header_summary.split(',')
-    header_summary[-1] = header_summary[-1][:-2]
+    header_summary[-1] = header_summary[-1][:-1]
     f.close()
 
     summary_matrix = np.loadtxt(open(summary_file, "rb"), delimiter=",", skiprows=1)
