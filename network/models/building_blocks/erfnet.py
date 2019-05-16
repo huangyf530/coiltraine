@@ -144,17 +144,21 @@ class Net(nn.Module):
         super().__init__()
 
         if encoder == None:
-            self.encoder = Encoder(num_classes)
+            self.encoder = Encoder(2)
+            self.fc = nn.Linear(35200, num_classes)
         else:
             self.encoder = encoder
-        self.decoder = Decoder(num_classes)
+            self.fc = nn.Linear(70400, num_classes)
+        self.decoder = Decoder(2)
 
     def forward(self, input, only_encode=False):
         if only_encode:
-            return self.encoder.forward(input, predict=True), None
+            output = self.encoder.forward(input, predict=True)
+            return self.fc(output), None
         else:
             output = self.encoder(input)  # predict=False by default
-            return self.decoder.forward(output), None
+            output = self.decoder.forward(output)
+            return self.fc(output), None
 
 
 def erfnet(num_classes, pretrained=False):
