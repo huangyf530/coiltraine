@@ -129,9 +129,6 @@ def get_causes_of_end(summary_file):
 
     summary_matrix = np.loadtxt(open(summary_file, "rb"), delimiter=",", skiprows=1)
 
-    print("summary file:", summary_file)
-    print(header_summary)
-
     success = summary_matrix[:, header_summary.index('result')]
     end_pedestrian = summary_matrix[:, header_summary.index('end_pedestrian_collision')]
     end_vehicle = summary_matrix[:, header_summary.index('end_vehicle_collision')]
@@ -144,7 +141,10 @@ def get_causes_of_end(summary_file):
                                np.expand_dims(end_vehicle, axis=1),
                                np.expand_dims(end_other, axis=1)),
                               axis=1)
+    print(all_ends)
     no_timeout_pos, end_cause = np.where(all_ends == 1)
+    print(no_timeout_pos)
+    print(end_cause)
     final_end_cause = np.zeros((len(success)))
     final_end_cause[no_timeout_pos] = end_cause + 1
 
