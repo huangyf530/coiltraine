@@ -209,7 +209,8 @@ def execute(gpu, exp_batch, exp_alias, drive_conditions, params):
         # Get all the uniquely named tasks
         task_list = unique([experiment.task_name for experiment in experiment_list ])
         # Now actually run the driving_benchmark
-
+        print(task_list[0])
+        print(control_filename)
         latest = get_latest_evaluated_checkpoint(control_filename + '_' + task_list[0])
 
         if latest is None:  # When nothing was tested, get latest returns none, we fix that.
