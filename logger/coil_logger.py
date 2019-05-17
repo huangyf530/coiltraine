@@ -217,6 +217,8 @@ def recover_loss_window(dataset_name, iteration):
     file_name = os.path.join(full_path_name, str(dataset_name) + '_error' + '.csv')
     if not os.path.exists(file_name):
         return []
+    print(iteration)
+    print(type(iteration))
     recovered_list = list(np.loadtxt(file_name))[0:iteration]
 
     # Now we need to rewrite on top of the recovered list, so everything syncs
