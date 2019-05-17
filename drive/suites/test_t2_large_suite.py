@@ -27,7 +27,7 @@ class TestT2Large(ExperimentSuite):
         return []
     @property
     def test_weathers(self):
-        return [14]
+        return [1, 8, 14]
 
     @property
     def collision_as_failure(self):
