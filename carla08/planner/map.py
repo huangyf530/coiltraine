@@ -96,8 +96,12 @@ class CarlaMap(object):
     def get_lane_orientation(self, world):
         """Get the lane orientation of a certain world position."""
         pixel = self.convert_to_pixel(world)
-
-        ori = self.map_image_lanes[int(pixel[1]), int(pixel[0]), 2]
+        try:
+            ori = self.map_image_lanes[int(pixel[1]), int(pixel[0]), 2]
+        except IndexError:
+            print("Index error: ", int(pixel[1]), int(pixel[0]))
+            print("Index pixel: ", pixel[1], pixel[0])
+            ori = self.map_image_lanes[int(pixel[1]), int(pixel[0]) - 1, 2]
         ori = color_to_angle(ori)
 
         return (-math.cos(ori), -math.sin(ori))
