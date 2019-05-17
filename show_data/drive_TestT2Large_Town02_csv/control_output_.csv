@@ -1,3 +1,0 @@
-step,episodes_completion,intersection_offroad,collision_pedestrians,collision_vehicles,episodes_fully_completed,driven_kilometers,end_pedestrian_collision,end_vehicle_collision,end_other_collision,intersection_otherlane
-20000,0.003052,34.000000,1.000000,1.000000,0.120000,8.491517,0.000000,0.000000,0.600000,24.000000
-40000,0.004771,44.000000,1.000000,1.000000,0.160000,10.623499,0.000000,0.000000,0.546667,38.000000
